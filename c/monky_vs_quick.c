@@ -263,6 +263,7 @@ void *monkey_sort(void *arr) {
  return NULL;
 }
 
+int partition(int *arr, int low, int high);
 void quicksort(int *arr, int low, int high) {
  if (low < high) {
      int pivot_index = partition(arr, low, high);
