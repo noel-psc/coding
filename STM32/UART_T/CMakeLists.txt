@@ -21,7 +21,7 @@
 #
 
 # Core project settings
-project("UART_R")
+project("UART_T")
 enable_language(C CXX ASM)
 message("Build type: " ${CMAKE_BUILD_TYPE})
 
@@ -48,6 +48,8 @@ set(sources_SRCS
     ${CMAKE_CURRENT_SOURCE_DIR}/Driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_rcc.c
     ${CMAKE_CURRENT_SOURCE_DIR}/Driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_gpio.c
     ${CMAKE_CURRENT_SOURCE_DIR}/Driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_exti.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/Driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_usart.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/Hardware/UART.c
     ${CMAKE_CURRENT_SOURCE_DIR}/Hardware/OLED.c
 )
 

@@ -19,10 +19,29 @@
 #include <stdint.h>
 #include "stm32f10x.h"
 #include "OLED.h"
+#include "UART.h"
+
+#define MAX 128
+
+uint8_t RxData;
 
 int main(void)
 {
+	NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);
 	OLED_Init();  /* Initialize the OLED display */
+	UART_Init();  /* Initialize the UART */
+
+	OLED_ShowString(1, 1, "RxData: ");
+
     /* Loop forever */
-	for(;;);
+
+	for(;;)
+	{
+		if (UART_GetRxFlag())
+		{
+			RxData = UART_GetRxData();
+			UART_SendByte(RxData);
+			OLED_ShowHexNum(1, 9, RxData, 2); // 在OLED上显示接收到的字符
+		}
+	}
 }
