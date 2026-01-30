@@ -1,0 +1,44 @@
+{
+	"folders": [
+		{
+			"path": "archive"
+		},
+		{
+			"path": "arduino"
+		},
+		{
+			"path": "asm"
+		},
+		{
+			"path": "c"
+		},
+		{
+			"path": "cc"
+		},
+		{
+			"path": "cpp"
+		},
+		{
+			"path": "cs"
+		},
+		{
+			"path": "docs"
+		},
+		{
+			"path": "html"
+		},
+		{
+			"path": "java"
+		},
+		{
+			"path": "MAUI"
+		},
+		{
+			"path": "py"
+		},
+		{
+			"path": "STM32"
+		}
+	],
+	"settings": {}
+}

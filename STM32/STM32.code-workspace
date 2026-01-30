@@ -1,0 +1,33 @@
+{
+	"folders": [
+		{
+			"path": "button_LED"
+		},
+		{
+			"path": "light_beep"
+		},
+		{
+			"path": "OLED"
+		},
+		{
+			"path": "test2_empty"
+		},
+		{
+			"path": "sensor_count"
+		},
+		{
+			"path": "rotary_encoder_count"
+		},
+		{
+			"path": "UART_R"
+		}
+	],
+	"settings": {
+		"stm32cube-ide-clangd.path": "cube",
+		"stm32cube-ide-clangd.arguments": [
+			"starm-clangd",
+			"--query-driver=${env:CUBE_BUNDLE_PATH}/gnu-tools-for-stm32/14.3.1+st.2/bin/arm-none-eabi-gcc.exe",
+			"--query-driver=${env:CUBE_BUNDLE_PATH}/gnu-tools-for-stm32/14.3.1+st.2/bin/arm-none-eabi-g++.exe"
+		]
+	}
+}

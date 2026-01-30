@@ -3,16 +3,20 @@
         {
             "type": "cppbuild",
             "label": "C/C++: g++.exe 生成活动文件",
-            "command": "C:\\app\\msys64\\mingw64\\bin\\g++.exe",
+            "command": "C:/app/mingw64/bin/g++.exe",
             "args": [
                 "-fdiagnostics-color=always",
                 "-g",
                 "${file}",
+                "-I", "${workspaceFolder}/",
+                "-I", "C:/app/opencv/build/include/",
+                "-L", "C:/app/opencv/build/x64/mingw/lib/",
+                "-l", "opencv_world4130",
                 "-o",
                 "${fileDirname}\\${fileBasenameNoExtension}.exe"
             ],
             "options": {
-                "cwd": "${fileDirname}"
+                "cwd": "C:/app/mingw64/bin"
             },
             "problemMatcher": [
                 "$gcc"
