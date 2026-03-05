@@ -1,0 +1,20 @@
+#ifndef __UART_H
+#define __UART_H
+
+#include <stdio.h>
+#include <errno.h>
+#include <unistd.h>
+#include <stdarg.h>
+
+#define MAX 128
+extern char UART_RxPacket[MAX];
+extern uint8_t UART_RxFlag;
+
+void UART_Init(void);
+void UART_SendByte(uint8_t byte);
+void UART_SendArray(uint8_t *arr, uint16_t len);
+void UART_SendString(const char *str);
+void UART_SendNumber(uint32_t num, uint8_t len);
+void UART_Printf(const char *format, ...);
+
+#endif

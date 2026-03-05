@@ -1,0 +1,60 @@
+<view class="container">
+  <!-- 搜索栏 -->
+  <view class="flex mb-10">
+    <input 
+      class="input flex-1" 
+      placeholder="搜索失物或招领信息" 
+      value="{{searchText}}"
+      bindinput="onSearchInput"
+    />
+    <button class="btn" style="margin-top: 0; margin-left: 10rpx; flex-shrink: 0;">搜索</button>
+  </view>
+  
+  <!-- 分类标签 -->
+  <view class="flex mb-10 overflow-x-auto">
+    <view 
+      class="tag {{activeCategory === 'all' ? 'active' : ''}}" 
+      bindtap="selectCategory" 
+      data-category="all"
+    >
+      全部
+    </view>
+    <view 
+      class="tag {{activeCategory === 'lost' ? 'active' : ''}}" 
+      bindtap="selectCategory" 
+      data-category="lost"
+    >
+      失物
+    </view>
+    <view 
+      class="tag {{activeCategory === 'found' ? 'active' : ''}}" 
+      bindtap="selectCategory" 
+      data-category="found"
+    >
+      招领
+    </view>
+  </view>
+  
+  <!-- 失物招领列表 -->
+  <view wx:for="{{items}}" wx:key="id" class="card" bindtap="navigateToDetail" data-id="{{item.id}}">
+    <image class="image" src="{{item.image || 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=lost%20and%20found%20item%20placeholder&image_size=square_4_3'}}" mode="aspectFill"></image>
+    <view class="title">{{item.title}}</view>
+    <view class="subtitle">{{item.description}}</view>
+    <view class="flex justify-between text-sm text-gray">
+      <view>{{item.location}}</view>
+      <view>{{item.time}}</view>
+    </view>
+    <view class="flex justify-between mt-10">
+      <view class="tag">{{item.category === 'lost' ? '寻找中' : '待认领'}}</view>
+      <view class="text-sm text-gray">发布者: {{item.publisher}}</view>
+    </view>
+  </view>
+  
+  <!-- 加载更多 -->
+  <view class="text-center text-gray text-sm mt-10" wx:if="{{hasMore}}">
+    <text bindtap="loadMore">加载更多</text>
+  </view>
+  <view class="text-center text-gray text-sm mt-10" wx:else>
+    没有更多数据了
+  </view>
+</view>

@@ -40,15 +40,21 @@ set(cpu_PARAMS
     # -mcpu, -mfloat, -mfloat-abi, ...
 )
 
+file(GLOB_RECURSE STM32_DRIVER_SOURCES
+    "Driver/STM32F10x_StdPeriph_Driver/src/*.c"
+)
+
+file(GLOB_RECURSE USER_SOURCES
+    "Src/*.c"
+    "Hardware/*.c"
+    "System/*.c"
+)
+
 # Sources
 set(sources_SRCS
-	${CMAKE_CURRENT_SOURCE_DIR}/Src/main.c
     ${CMAKE_CURRENT_SOURCE_DIR}/Driver/CMSIS/CM3/DeviceSupport/ST/STM32F10x/system_stm32f10x.c
-    ${CMAKE_CURRENT_SOURCE_DIR}/Driver/STM32F10x_StdPeriph_Driver/src/misc.c
-    ${CMAKE_CURRENT_SOURCE_DIR}/Driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_rcc.c
-    ${CMAKE_CURRENT_SOURCE_DIR}/Driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_gpio.c
-    ${CMAKE_CURRENT_SOURCE_DIR}/Driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_exti.c
-    ${CMAKE_CURRENT_SOURCE_DIR}/Hardware/OLED.c
+    ${STM32_DRIVER_SOURCES}
+    ${USER_SOURCES}
 )
 
 set(include_DIRS
@@ -57,6 +63,7 @@ set(include_DIRS
     ${CMAKE_CURRENT_SOURCE_DIR}/Driver/CMSIS/CM3/CoreSupport
     ${CMAKE_CURRENT_SOURCE_DIR}/Driver/STM32F10x_StdPeriph_Driver/inc
     ${CMAKE_CURRENT_SOURCE_DIR}/Hardware
+    ${CMAKE_CURRENT_SOURCE_DIR}/System
 )
 
 # Include directories for each compiler

@@ -1,0 +1,23 @@
+<view class="container">
+  <view wx:for="{{myPosts}}" wx:key="id" class="card">
+    <image class="image" src="{{item.image || 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=lost%20and%20found%20item%20placeholder&image_size=square_4_3'}}" mode="aspectFill"></image>
+    <view class="title">{{item.title}}</view>
+    <view class="subtitle">{{item.description}}</view>
+    <view class="flex justify-between text-sm text-gray">
+      <view>{{item.location}}</view>
+      <view>{{item.time}}</view>
+    </view>
+    <view class="flex justify-between mt-10">
+      <view class="tag">{{item.category === 'lost' ? '寻找中' : '待认领'}}</view>
+      <view class="flex">
+        <view class="action-btn" bindtap="editPost" data-id="{{item.id}}">编辑</view>
+        <view class="action-btn ml-10" bindtap="deletePost" data-id="{{item.id}}">删除</view>
+      </view>
+    </view>
+  </view>
+  
+  <view wx:if="{{myPosts.length === 0}}" class="text-center text-gray">
+    <view>暂无发布记录</view>
+    <view class="btn" bindtap="navigateToPublish" style="display: inline-block; margin-top: 20rpx;">去发布</view>
+  </view>
+</view>

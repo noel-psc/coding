@@ -23,14 +23,38 @@
 		},
 		{
 			"path": "UART_TR"
+		},
+		{
+			"path": "UART_TRHexPacket"
+		},
+		{
+			"path": "UART_TRTextPacket"
+		},
+		{
+			"path": "6-1 RCC_timer_interrupt"
+		},
+		{
+			"path": "6-2 RCC_external_clock"
+		},
+		{
+			"path": "6-3 PWM_breathing_light"
+		},
+		{
+			"path": "6-4 PWM_servo"
+		},
+		{
+			"path": "6-5 PWM_DC_motor"
+		},
+		{
+			"path": "6-5 PWM_rotary_encoder_DC_motor"
 		}
 	],
 	"settings": {
 		"stm32cube-ide-clangd.path": "cube",
 		"stm32cube-ide-clangd.arguments": [
 			"starm-clangd",
-			"--query-driver=${env:CUBE_BUNDLE_PATH}/gnu-tools-for-stm32/14.3.1+st.2/bin/arm-none-eabi-gcc",
-			"--query-driver=${env:CUBE_BUNDLE_PATH}/gnu-tools-for-stm32/14.3.1+st.2/bin/arm-none-eabi-g++"
+			"--query-driver=${env:CUBE_BUNDLE_PATH}/gnu-tools-for-stm32/14.3.1+st.2/bin/arm-none-eabi-gcc.exe",
+			"--query-driver=${env:CUBE_BUNDLE_PATH}/gnu-tools-for-stm32/14.3.1+st.2/bin/arm-none-eabi-g++.exe"
 		]
 	}
 }

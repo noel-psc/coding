@@ -1,3 +1,4 @@
+#include "misc.h"
 #include "stm32f10x.h"
 #include "stm32f10x_gpio.h"
 #include "stm32f10x_rcc.h"
@@ -10,6 +11,9 @@
 #define UART_GPIO_PORT GPIOA
 #define UART_USART_PORT USART1
 #define MAX 128
+
+uint8_t UART_RxData;
+uint8_t UART_RxNE = 0;
 
 void UART_Init(void)
 {
@@ -34,6 +38,15 @@ void UART_Init(void)
 	USART_InitStruct.USART_Mode = USART_Mode_Tx | USART_Mode_Rx;
 	USART_InitStruct.USART_HardwareFlowControl = USART_HardwareFlowControl_None;
 	USART_Init(UART_USART_PORT, &USART_InitStruct);
+
+	USART_ITConfig(UART_USART_PORT, USART_IT_RXNE, ENABLE);
+
+	NVIC_InitTypeDef NVIC_InitStruct;
+	NVIC_InitStruct.NVIC_IRQChannel = USART1_IRQn;
+	NVIC_InitStruct.NVIC_IRQChannelPreemptionPriority = 1;
+	NVIC_InitStruct.NVIC_IRQChannelSubPriority = 1;
+	NVIC_InitStruct.NVIC_IRQChannelCmd = ENABLE;
+	NVIC_Init(&NVIC_InitStruct);
 
 	USART_Cmd(UART_USART_PORT, ENABLE);
 }
@@ -111,4 +124,25 @@ void UART_Printf(const char *format, ...)
 	vsprintf(buffer, format, args);
 	va_end(args);
 	UART_SendString(buffer);
+}
+
+uint8_t UART_GetRxFlag(void)
+{
+	return UART_RxNE;
+}
+
+uint8_t UART_GetRxData(void)
+{
+	UART_RxNE = 0;
+	return UART_RxData;
+}
+
+void USART1_IRQHandler(void)
+{
+	if (USART_GetITStatus(UART_USART_PORT, USART_IT_RXNE) != RESET)
+	{
+		UART_RxData = USART_ReceiveData(UART_USART_PORT);
+		UART_RxNE = 1;
+		USART_ClearITPendingBit(UART_USART_PORT, USART_IT_RXNE);
+	}
 }

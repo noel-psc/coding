@@ -1,0 +1,41 @@
+<view class="container">
+  <view class="card">
+    <!-- 图片展示 -->
+    <image class="image" src="{{item.image || 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=lost%20and%20found%20item%20placeholder&image_size=square_4_3'}}" mode="aspectFill"></image>
+    
+    <!-- 标题和类型 -->
+    <view class="title">{{item.title}}</view>
+    <view class="tag">{{item.category === 'lost' ? '寻找中' : '待认领'}}</view>
+    
+    <!-- 详细信息 -->
+    <view class="mt-10">
+      <view class="subtitle">详细描述</view>
+      <view class="text-gray">{{item.description}}</view>
+    </view>
+    
+    <view class="mt-10">
+      <view class="subtitle">地点</view>
+      <view class="text-gray">{{item.location}}</view>
+    </view>
+    
+    <view class="mt-10">
+      <view class="subtitle">时间</view>
+      <view class="text-gray">{{item.time}}</view>
+    </view>
+    
+    <view class="mt-10">
+      <view class="subtitle">发布者</view>
+      <view class="text-gray">{{item.publisher}}</view>
+    </view>
+    
+    <view class="mt-10">
+      <view class="subtitle">联系方式</view>
+      <view class="text-gray">{{item.contact || '请联系发布者'}}</view>
+    </view>
+    
+    <!-- 操作按钮 -->
+    <view class="btn" bindtap="contactPublisher">
+      联系发布者
+    </view>
+  </view>
+</view>

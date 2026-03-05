@@ -23,25 +23,26 @@
 
 #define MAX 128
 
-uint8_t RxData;
-
 int main(void)
 {
 	NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);
 	OLED_Init();  /* Initialize the OLED display */
 	UART_Init();  /* Initialize the UART */
 
-	OLED_ShowString(1, 1, "RxData: ");
+	// UART_SendByte('A');
+	// UART_SendArray((uint8_t *)"Hello, UART!\n", 13);
+	// UART_SendString("UART Initialized Successfully!\n");
+	// UART_SendNumber(12345, 5);
+	printf("Num=%d\n", 666);
+	char str[MAX] = "";
+	sprintf(str, "Num=%d\r\n", 666);
+	UART_SendString(str);
+	UART_Printf("Num=%d\r\n", 666);
+	printf("你好，世界\r\n");
 
     /* Loop forever */
 
 	for(;;)
 	{
-		if (UART_GetRxFlag())
-		{
-			RxData = UART_GetRxData();
-			UART_SendByte(RxData);
-			OLED_ShowHexNum(1, 9, RxData, 2); // 在OLED上显示接收到的字符
-		}
 	}
 }
