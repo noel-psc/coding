@@ -1,8 +1,0 @@
-.action-btn {
-  color: #1989fa;
-  font-size: 28rpx;
-}
-
-.ml-10 {
-  margin-left: 10rpx;
-}

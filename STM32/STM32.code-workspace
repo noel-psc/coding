@@ -47,6 +47,18 @@
 		},
 		{
 			"path": "6-5 PWM_rotary_encoder_DC_motor"
+		},
+		{
+			"path": "6-6 IC_freq_detect"
+		},
+		{
+			"path": "6-7 IC_PWMI_freq_duty_detect"
+		},
+		{
+			"path": "6-8 IC_encoder_speed_detect"
+		},
+		{
+			"path": "walking-table"
 		}
 	],
 	"settings": {
