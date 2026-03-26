@@ -56,9 +56,6 @@
 		},
 		{
 			"path": "6-8 IC_encoder_speed_detect"
-		},
-		{
-			"path": "walking-table"
 		}
 	],
 	"settings": {
