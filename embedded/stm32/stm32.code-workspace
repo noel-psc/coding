@@ -1,0 +1,72 @@
+{
+	"folders": [
+		{
+			"path": "button_LED"
+		},
+		{
+			"path": "light_beep"
+		},
+		{
+			"path": "OLED"
+		},
+		{
+			"path": "test2_empty"
+		},
+		{
+			"path": "sensor_count"
+		},
+		{
+			"path": "rotary_encoder_count"
+		},
+		{
+			"path": "UART_T"
+		},
+		{
+			"path": "UART_TR"
+		},
+		{
+			"path": "UART_TRHexPacket"
+		},
+		{
+			"path": "UART_TRTextPacket"
+		},
+		{
+			"path": "6-1 RCC_timer_interrupt"
+		},
+		{
+			"path": "6-2 RCC_external_clock"
+		},
+		{
+			"path": "6-3 PWM_breathing_light"
+		},
+		{
+			"path": "6-4 PWM_servo"
+		},
+		{
+			"path": "6-5 PWM_DC_motor"
+		},
+		{
+			"path": "6-5 PWM_rotary_encoder_DC_motor"
+		},
+		{
+			"path": "6-6 IC_freq_detect"
+		},
+		{
+			"path": "6-7 IC_PWMI_freq_duty_detect"
+		},
+		{
+			"path": "6-8 IC_encoder_speed_detect"
+		},
+		{
+			"path": "7-1 AD_single_channel"
+		}
+	],
+	"settings": {
+		"stm32cube-ide-clangd.path": "cube",
+		"stm32cube-ide-clangd.arguments": [
+			"starm-clangd",
+			"--query-driver=${env:CUBE_BUNDLE_PATH}/gnu-tools-for-stm32/14.3.1+st.2/bin/arm-none-eabi-gcc.exe",
+			"--query-driver=${env:CUBE_BUNDLE_PATH}/gnu-tools-for-stm32/14.3.1+st.2/bin/arm-none-eabi-g++.exe"
+		]
+	}
+}
