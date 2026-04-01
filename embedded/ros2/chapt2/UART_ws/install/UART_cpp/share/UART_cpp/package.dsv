@@ -1,0 +1,8 @@
+source;share/UART_cpp/hook/cmake_prefix_path.ps1
+source;share/UART_cpp/hook/cmake_prefix_path.dsv
+source;share/UART_cpp/hook/cmake_prefix_path.sh
+source;share/UART_cpp/local_setup.bash
+source;share/UART_cpp/local_setup.dsv
+source;share/UART_cpp/local_setup.ps1
+source;share/UART_cpp/local_setup.sh
+source;share/UART_cpp/local_setup.zsh
