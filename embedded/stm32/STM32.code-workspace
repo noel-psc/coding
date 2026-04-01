@@ -56,6 +56,9 @@
 		},
 		{
 			"path": "6-8 IC_encoder_speed_detect"
+		},
+		{
+			"path": "7-1 AD_single_channel"
 		}
 	],
 	"settings": {

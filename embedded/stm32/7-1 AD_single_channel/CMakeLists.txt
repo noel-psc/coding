@@ -21,7 +21,7 @@
 #
 
 # Core project settings
-project("OLED")
+project("AD_single_channel")
 enable_language(C CXX ASM)
 message("Build type: " ${CMAKE_BUILD_TYPE})
 
