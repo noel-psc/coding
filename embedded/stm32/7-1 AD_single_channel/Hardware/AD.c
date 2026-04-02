@@ -7,8 +7,8 @@
 void AD_Init(void)
 {
 	/* Initialize ADC peripheral here */
-	RCC_APB2_PeriphClockCmd(RCC_APB2Periph_ADC1, ENABLE); /* Enable ADC1 clock */
-	RCC_APB2_PeriphClockCmd(RCC_APB2Periph_GPIOA, ENABLE); /* Enable ADC1 clock */
+	RCC_APB2PeriphClockCmd(RCC_APB2Periph_ADC1, ENABLE); /* Enable ADC1 clock */
+	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA, ENABLE); /* Enable GPIOA clock */
 	
 	RCC_ADCCLKConfig(RCC_PCLK2_Div6);
 
@@ -23,22 +23,24 @@ void AD_Init(void)
 	ADC_InitStructure.ADC_Mode = ADC_Mode_Independent; /* Independent mode */
 	ADC_InitStructure.ADC_DataAlign = ADC_DataAlign_Right; /* Right align data */
 	ADC_InitStructure.ADC_ScanConvMode = DISABLE; /* Disable scan mode */
-	ADC_InitStructure.ADC_ContinuousConvMode = DISABLE; /* Enable continuous conversion */
+	ADC_InitStructure.ADC_ContinuousConvMode = ENABLE; /* Enable continuous conversion */
 	ADC_InitStructure.ADC_ExternalTrigConv = ADC_ExternalTrigConv_None; /* No external trigger */
 	ADC_InitStructure.ADC_NbrOfChannel = 1; /* One channel */
-	ADC_Init(ADC1, &ADC_InitStructure); /* Initialize ADC1 with the specified
+	ADC_Init(ADC1, &ADC_InitStructure); /* Initialize ADC1 with the specified settings */
 
 	ADC_Cmd(ADC1, ENABLE); /* Enable ADC1 */
 
 	ADC_ResetCalibration(ADC1);
 	while (ADC_GetResetCalibrationStatus(ADC1) == SET); /* Wait for calibration reset to complete */
 	ADC_StartCalibration(ADC1);
-	while (ADC_GetCalibrationStatus(ADC1) == SET); /* Wait for calibration to complete
+	while (ADC_GetCalibrationStatus(ADC1) == SET); /* Wait for calibration to complete */
+
+	ADC_SoftwareStartConvCmd(ADC1, ENABLE); /* Start ADC conversion */
+
 }
 
 uint16_t AD_GetValue(void)
 {
-	ADC_SoftwareStartConvCmd(ADC1, ENABLE); /* Start ADC conversion */
 	while (ADC_GetFlagStatus(ADC1, ADC_FLAG_EOC) == RESET); /* Wait for conversion to complete */
 	return ADC_GetConversionValue(ADC1); /* Return the converted value */
 }

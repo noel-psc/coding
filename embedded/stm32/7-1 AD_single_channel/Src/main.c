@@ -22,6 +22,7 @@
 #include "AD.h"
 
 uint16_t ad_value = 0;
+float voltage = 0;
 
 int main(void)
 {
@@ -29,9 +30,13 @@ int main(void)
 	AD_Init();   /* Initialize the ADC */
 
 	OLED_ShowString(1, 1, "AD Value: "); /* Display static text on the OLED */
+	OLED_ShowString(2, 1, "Voltage: 0.00V"); /* Display static text on the OLED */
 	for(;;)
 	{
 		ad_value = AD_GetValue(); /* Get the current ADC value */
+		voltage = ((float)ad_value / 4095) * 3.3; /* Convert ADC value to voltage in V */
 		OLED_ShowNum(1, 11, ad_value, 4); /* Display the ADC value on the OLED */
+		OLED_ShowNum(2, 10, (uint16_t)voltage, 1); /* Display the voltage on the OLED */
+		OLED_ShowNum(2, 12, (uint16_t)(voltage * 100) % 100, 2); /* Display the voltage on the OLED */
 	}
 }
